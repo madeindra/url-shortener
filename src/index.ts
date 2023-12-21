@@ -1,11 +1,17 @@
 import Fastify from 'fastify';
 
+import shortenController from './controllers/shorten';
+import redirectController from './controllers/redirect';
+
+import shortenBodySchema from './schema/shorten';
+
 const fastify = Fastify();
 
-const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
-const HOST = process.env.HOST ?? '0.0.0.0';
+const PORT: number = process.env.PORT ? Number(process.env.PORT) : 3000;
+const HOST: string = process.env.HOST ?? '0.0.0.0';
 
-fastify.get('/', async (request, reply) => ({ hello: 'world' }));
+fastify.post('/shorten', { schema: shortenBodySchema }, shortenController);
+fastify.get('/:slug', redirectController);
 
 const start = async () => {
   try {
