@@ -11,7 +11,7 @@ const PORT: number = process.env.PORT ? Number(process.env.PORT) : 3000;
 const HOST: string = process.env.HOST ?? '0.0.0.0';
 
 fastify.post('/shorten', { schema: shortenBodySchema }, shortenController);
-fastify.get('/:slug', redirectController);
+fastify.get('/:slug([a-zA-Z0-9]{5,})', redirectController);
 
 const start = async () => {
   try {
