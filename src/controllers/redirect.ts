@@ -1,4 +1,5 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
+import { validateUrl } from '../utils/slug';
 
 export interface RedirectControllerOptions {
   tablename: string;
@@ -20,8 +21,8 @@ export default function redirectController(
     }
 
     // validate url
-    const url = new URL(result.original_url);
-    if (!url) {
+    const valid = validateUrl(result.original_url);
+    if (!valid) {
       return reply.code(400).send({ error: 'Invalid URL' });
     }
 

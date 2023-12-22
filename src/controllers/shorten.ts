@@ -2,6 +2,7 @@ import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 
 // import schemas
 import shortenBodySchema from '../schema/shorten';
+import { generateSlug } from '../utils/slug';
 
 export interface ShortenControllerOptions {
   tablename: string;
@@ -13,15 +14,14 @@ export default function shortenController(
   done: () => void,
 ) {
   fastify.post('/shorten', { schema: shortenBodySchema }, async (request: FastifyRequest, reply: FastifyReply) => {
-    const { originalUrl, shortenSlug } = request.body as {
+    const { originalUrl, customSlug } = request.body as {
       originalUrl: string;
-      shortenSlug?: string;
+      customSlug?: string;
     };
 
-    let slug = shortenSlug;
+    let slug = customSlug;
     if (!slug) {
-      // TODO: refine slug generation
-      slug = Math.random().toString(36).substring(2, 7);
+      slug = generateSlug(5);
     }
 
     // check if slug exists
