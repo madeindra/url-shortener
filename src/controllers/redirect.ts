@@ -16,7 +16,7 @@ export default function redirectController(
 
     // if row doesn't exist, return 404
     if (!result) {
-      return reply.code(404).send({ error: 'Not Found' });
+      return reply.code(404).send({ error: 'URL not found' });
     }
 
     // TODO: validate URL before redirecting
