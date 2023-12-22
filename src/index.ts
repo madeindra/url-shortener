@@ -12,7 +12,7 @@ import shortenController from './controllers/shorten';
 import redirectController from './controllers/redirect';
 
 // fastify initialization
-const fastify = Fastify();
+const fastify = Fastify({ logger: true });
 
 // configs initialization
 const PORT: number = getPort();
@@ -25,8 +25,8 @@ async function init() {
   await fastify.register(sqlitePlugin, { filename: DB_FILENAME, tablename: DB_TABLENAME });
 
   // register controllers
-  await fastify.register(shortenController);
-  await fastify.register(redirectController);
+  await fastify.register(shortenController, { tablename: DB_TABLENAME });
+  await fastify.register(redirectController, { tablename: DB_TABLENAME });
 
   // initialize fastify
   await fastify.ready();
