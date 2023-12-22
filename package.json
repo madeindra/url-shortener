@@ -28,7 +28,11 @@
     "start": "node dist/index.js",
     "start:dev": "nodemon src/index.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": ["url", "shortner", "slug", "fastify", "typescript", "sqlite"],
+  "author": "madeindra",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/madeindra/url-shortener.git"
+  }
 }
