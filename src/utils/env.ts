@@ -6,6 +6,10 @@ export function getHost(): string {
   return process.env.HOST ?? '0.0.0.0';
 }
 
-export function getDbUri(): string {
-  return process.env.DB_URI ?? ':memory:';
+export function getDbFilename(): string {
+  return process.env.DB_FILENAME ?? ':memory:';
+}
+
+export function getDbTable(): string {
+  return process.env.DB_TABLENAME ?? 'urls';
 }

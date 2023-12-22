@@ -3,7 +3,9 @@ import Fastify from 'fastify';
 import sqlitePlugin from './utils/database';
 
 // import utilities
-import { getDbUri, getHost, getPort } from './utils/env';
+import {
+  getDbFilename, getDbTable, getHost, getPort,
+} from './utils/env';
 
 // import controllers
 import shortenController from './controllers/shorten';
@@ -15,11 +17,12 @@ const fastify = Fastify();
 // configs initialization
 const PORT: number = getPort();
 const HOST: string = getHost();
-const DB_URI: string = getDbUri();
+const DB_FILENAME: string = getDbFilename();
+const DB_TABLENAME: string = getDbTable();
 
 async function init() {
   // register plugins
-  await fastify.register(sqlitePlugin, { filename: DB_URI });
+  await fastify.register(sqlitePlugin, { filename: DB_FILENAME, tablename: DB_TABLENAME });
 
   // register controllers
   await fastify.register(shortenController);

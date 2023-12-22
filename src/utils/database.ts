@@ -5,6 +5,7 @@ import sqlite3 from 'sqlite3';
 // plugin options
 export interface SqlitePluginOptions {
   filename: string;
+  tablename: string;
 }
 
 // extend fastify interface
@@ -20,6 +21,15 @@ function sqlitePlugin(fastify: FastifyInstance, options: SqlitePluginOptions, do
   if (!fastify.sqlite) {
     const db = new sqlite3.Database(options.filename);
     fastify.decorate('sqlite', db);
+
+    // create the new table if it doesn't exist
+    fastify.addHook('onReady', () => {
+      db.run(`CREATE TABLE IF NOT EXISTS ${options.tablename} (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        original_url TEXT NOT NULL,
+        slug TEXT NOT NULL UNIQUE
+      )`);
+    });
 
     // Close the database connection when the plugin is done
     fastify.addHook('onClose', () => {
