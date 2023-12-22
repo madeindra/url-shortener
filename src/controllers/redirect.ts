@@ -1,7 +1,15 @@
-import { FastifyReply, FastifyRequest } from 'fastify';
+import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 
-export default (req: FastifyRequest, res: FastifyReply) => {
-  const { slug } = req.params as { slug: string };
+export default function redirectController(
+  fastify: FastifyInstance,
+  opts: unknown,
+  done: () => void,
+) {
+  fastify.get('/:slug([a-zA-Z0-9]{5,})', (request: FastifyRequest, reply: FastifyReply) => {
+    const { slug } = request.params as { slug: string };
 
-  return res.redirect(301, `https://google.com/${slug}`);
-};
+    return reply.redirect(301, `https://google.com/${slug}`);
+  });
+
+  done();
+}
