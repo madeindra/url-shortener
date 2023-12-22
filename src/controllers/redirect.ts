@@ -19,9 +19,13 @@ export default function redirectController(
       return reply.code(404).send({ error: 'URL not found' });
     }
 
-    // TODO: validate URL before redirecting
+    // validate url
+    const url = new URL(result.original_url);
+    if (!url) {
+      return reply.code(400).send({ error: 'Invalid URL' });
+    }
 
-    // if row exists, redirect to original_url
+    // redirect to original_url
     return reply.redirect(301, result.original_url);
   });
 
