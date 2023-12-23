@@ -31,7 +31,10 @@ copyButton.onclick = () => {
 document.getElementById('urlForm').onsubmit = async (event) => {
   // prevent the form from submitting and refreshing the page
   event.preventDefault();
-  
+
+  // set the button to loading
+  const restoreButton = setButtonLoading(document.getElementById('submitButton'));
+
   // get the URL and slug from the form
   const url = document.getElementById('urlInput').value;
   const slug = document.getElementById('slugInput').value;
@@ -47,6 +50,9 @@ document.getElementById('urlForm').onsubmit = async (event) => {
       customSlug: slug,
     }),
   })
+
+  // restore the button to its original state
+  restoreButton();
 
   // parse the response
   const data = await response.json();
@@ -68,3 +74,19 @@ document.getElementById('urlForm').onsubmit = async (event) => {
   // remove invisible from resultDiv to display it
   document.getElementById('resultDiv').classList.remove('invisible');
 };
+
+function setButtonLoading(element) {
+  // store the original inner html
+  const original = element.innerHTML;
+
+  // change inner html to span element
+  element.innerHTML = `
+  <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+  <span role="status">Loading...</span>
+  `;
+
+  return () => {
+    // restore the original inner html
+    element.innerHTML = original;
+  }
+}
