@@ -35,10 +35,10 @@ urlForm.onsubmit = async (event) => {
   event.preventDefault();
 
   // validate form
+  urlForm.classList.add('was-validated')
   if (!urlForm.checkValidity()) {
-    event.stopPropagation()
     // add was-validated class to show validation errors
-    urlForm.classList.add('was-validated')
+    event.stopPropagation();
     return;
   }
 
@@ -54,11 +54,9 @@ urlForm.onsubmit = async (event) => {
     originalUrl: url.trim(),
   };
 
+  // add slug to body if it is not empty
   if (slug.trim()) {
-    body = {
-      ...body,
-      customSlug: slug.trim(),
-    }
+    body.customSlug = slug.trim();
   }
 
   // send API request to shorten the URL
@@ -92,6 +90,10 @@ urlForm.onsubmit = async (event) => {
 
   // remove invisible from resultDiv to display it
   document.getElementById('resultDiv').classList.remove('invisible');
+
+  // reset form
+  urlForm.reset();
+  urlForm.classList.remove('was-validated');
 };
 
 // function to set the button to loading
