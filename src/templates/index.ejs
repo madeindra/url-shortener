@@ -19,37 +19,49 @@
     </header>
 
     <main class="mx-auto my-5"></main>
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <form id="urlForm" class="needs-validation" novalidate>
-            <div class="card mb-3">
-              <div class="card-body">
-                <div class="mb-3">
-                  <label for="urlInput" class="form-label">Enter a long URL<span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="urlInput" placeholder="Example: https://example.com" required>
-                  <div class="invalid-feedback">
-                    Please enter a valid URL.
-                  </div>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form id="urlForm" class="needs-validation" novalidate>
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="mb-3">
+                <label for="urlInput" class="form-label">Enter a long URL<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="urlInput" placeholder="Example: https://example.com"
+                  required>
+                <div class="invalid-feedback">
+                  Please enter a valid URL.
                 </div>
-                <div class="mb-3">
-                    <label for="slugInput" class="form-label">Enter a custom short URL <span class="text-muted">(min 5 characters)</span></label>
-                  <input type="text" class="form-control" id="slugInput" placeholder="Example: my-link" minlength="5">
-                </div>
-                <button type="submit" class="btn btn-primary">Create Short URL</button>
+              </div>
+              <div class="mb-3">
+                <label for="slugInput" class="form-label">Enter a custom short URL <span class="text-muted">(min 5
+                    characters)</span></label>
+                <input type="text" class="form-control" id="slugInput" placeholder="Example: my-link" minlength="5">
+              </div>
+              <button type="submit" class="btn btn-primary">Create Short URL</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="resultDiv" class="row invisible">
+      <div class="col-md-6 offset-md-3">
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="shortenedUrl" class="form-label">Your short URL</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="shortenedUrl" readonly>
+                <button class="btn btn-outline-secondary" type="button" id="copyButton">Copy</button>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col">
-          <div id="shortenedUrl"></div>
-        </div>
-      </div>
+    </div>
     </main>
 
-    <footer class="my-5 pt-5 text-body-secondary text-center text-small">
+    <footer class="my-5 text-body-secondary text-center text-small">
       <p class="mb-1">© <%=new Date().getFullYear()%> Made Indra</p>
       <ul class="list-inline">
         <li class="list-inline-item"><a class="link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
