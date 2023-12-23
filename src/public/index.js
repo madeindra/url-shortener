@@ -78,11 +78,11 @@ urlForm.onsubmit = async (event) => {
   if (!response.ok) {
     // if there is a message, display it
     if (data.message) {
-      return alert(data.message);
+      return setWarningMessage(data.message);
     }
 
     // if there is no message, display a generic error
-    return alert('An error occurred');
+    return setWarningMessage('An error occurred');
   }
 
   // display the shortened URL
@@ -111,4 +111,18 @@ function setButtonLoading(element) {
     // restore the original inner html
     element.innerHTML = original;
   }
+}
+
+// dismis alert on button click
+document.getElementById('alertDismis').onclick = () => {
+  document.getElementById('alertDiv').classList.add('d-none');
+}
+
+// function to set warning message
+function setWarningMessage(message) {
+  // remove d-none class from alertDiv
+  document.getElementById('alertDiv').classList.remove('d-none');
+
+  // set the message to alertText
+  document.getElementById('alertText').innerHTML = `<strong>Error: </strong>${message}`;
 }
