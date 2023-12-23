@@ -35,7 +35,18 @@ npm start
 
 1. Open your browser and visit `http://localhost:3000`
 
-2. Send POST request to `http://localhost:3000/shorten` with the following body:
+2. Input your URL and custom slug (optional) to the form
+
+3. Click `Shorten` button
+
+4. Copy the shortened URL
+
+## API Documentation
+
+### Create Short URL
+
+POST /shorten
+
 ```
 {
     "originalUrl": "https://www.google.com",
@@ -43,9 +54,11 @@ npm start
 }
 ```
 
-3. Copy the generated short URL and open it in your browser
+### Get Original URL
+
+GET /:slug
 
 ## TODOs
+- [X] Add homepage with form to shorten URL
 - [ ] Add docker support
-- [ ] Add homepage with form to shorten URL
 - [ ] Add testings

@@ -1,7 +1,7 @@
 // assign copying function to copy button
 const copyButton = document.getElementById('copyButton');
 
-// Initialize the tooltip without showing it initially
+// initialize the tooltip without showing it initially
 const tooltip = new bootstrap.Tooltip(copyButton, {
   placement: 'top',
   title: 'Link copied!',
@@ -73,7 +73,7 @@ urlForm.onsubmit = async (event) => {
 
   // parse the response
   const data = await response.json();
-  
+
   // handle the error for non 200 response codes
   if (!response.ok) {
     // if there is a message, display it
@@ -115,12 +115,13 @@ function setButtonLoading(element) {
 
 // dismis alert on button click
 document.getElementById('alertDismis').onclick = () => {
+  // add d-none class to alertDiv to hide it
   document.getElementById('alertDiv').classList.add('d-none');
 }
 
 // function to set warning message
 function setWarningMessage(message) {
-  // remove d-none class from alertDiv
+  // remove d-none class from alertDiv to display it
   document.getElementById('alertDiv').classList.remove('d-none');
 
   // set the message to alertText
