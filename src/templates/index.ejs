@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>URL Shortener</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="/index.css" rel="stylesheet">
+</head>
+<body>
+  <form id="urlForm">
+    <input type="text" id="urlInput" placeholder="Enter URL" required>
+    <input type="text" id="slugInput" placeholder="Enter Custom Slug" minlength="5">
+    <button type="submit">Shorten URL</button>
+  </form>
+
+  <div id="shortenedUrl"></div>
+
+  <script src="/index.js"></script>
+</body>
+</html>

@@ -8,5 +8,5 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.json'
   },
-  ignorePatterns: ['dist/', '.eslintrc.js']
+  ignorePatterns: ['dist/', '.eslintrc.js', 'src/public']
 };
