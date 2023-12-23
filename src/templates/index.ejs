@@ -26,7 +26,7 @@
             <div class="card-body">
               <div class="mb-3">
                 <label for="urlInput" class="form-label">Enter a long URL<span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="urlInput" placeholder="Example: https://example.com"
+                <input type="text" class="form-control" id="urlInput" placeholder="Example: https://example.com" pattern='^(http|https):\/\/[^ "]+'
                   required>
                 <div class="invalid-feedback">
                   Please enter a valid URL.
@@ -35,9 +35,12 @@
               <div class="mb-3">
                 <label for="slugInput" class="form-label">Enter a custom short URL <span class="text-muted">(min 5
                     characters)</span></label>
-                <input type="text" class="form-control" id="slugInput" placeholder="Example: my-link" minlength="5">
+                <input type="text" class="form-control" id="slugInput" placeholder="Example: mylink" minlength="5" pattern="[a-zA-Z0-9]+">
+                <div class="invalid-feedback">
+                  Please use alphanumeric only with a minimum of 5 characters.
+                </div>
               </div>
-              <button type="submit" class="btn btn-primary" id="submitButton">Create Short URL</button>
+              <button type="submit" class="btn btn-outline-primary" id="submitButton">Create Short URL</button>
             </div>
           </div>
         </form>

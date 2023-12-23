@@ -8,6 +8,7 @@ const tooltip = new bootstrap.Tooltip(copyButton, {
   trigger: 'manual'
 });
 
+// handle the copy onclick event
 copyButton.onclick = () => {
   // get the shortened URL input
   const urlInput = document.getElementById('shortenedUrl');
@@ -28,9 +29,18 @@ copyButton.onclick = () => {
 }
 
 // handle the form submission
-document.getElementById('urlForm').onsubmit = async (event) => {
+const urlForm = document.getElementById('urlForm');
+urlForm.onsubmit = async (event) => {
   // prevent the form from submitting and refreshing the page
   event.preventDefault();
+
+  // validate form
+  if (!urlForm.checkValidity()) {
+    event.stopPropagation()
+    // add was-validated class to show validation errors
+    urlForm.classList.add('was-validated')
+    return;
+  }
 
   // set the button to loading
   const restoreButton = setButtonLoading(document.getElementById('submitButton'));
@@ -39,16 +49,25 @@ document.getElementById('urlForm').onsubmit = async (event) => {
   const url = document.getElementById('urlInput').value;
   const slug = document.getElementById('slugInput').value;
 
+  // create request body
+  const body = {
+    originalUrl: url.trim(),
+  };
+
+  if (slug.trim()) {
+    body = {
+      ...body,
+      customSlug: slug.trim(),
+    }
+  }
+
   // send API request to shorten the URL
   const response = await fetch('/shorten', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      originalUrl: url,
-      customSlug: slug,
-    }),
+    body: JSON.stringify(body),
   })
 
   // restore the button to its original state
@@ -75,6 +94,7 @@ document.getElementById('urlForm').onsubmit = async (event) => {
   document.getElementById('resultDiv').classList.remove('invisible');
 };
 
+// function to set the button to loading
 function setButtonLoading(element) {
   // store the original inner html
   const original = element.innerHTML;
