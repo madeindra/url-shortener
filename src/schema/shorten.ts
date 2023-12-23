@@ -6,7 +6,7 @@ const shortenBodySchema = {
       type: 'string',
       format: 'uri',
     },
-    customPath: {
+    customSlug: {
       type: 'string',
       pattern: '^[a-zA-Z0-9]{5,}$',
     },
