@@ -33,7 +33,7 @@ async function init() {
 
   // register static files for homepage assets
   await fastify.register(fastifyStatic, {
-    root: path.join(__dirname, 'public'),
+    root: path.join(__dirname, '../public'),
     prefix: '/',
   });
 
@@ -41,7 +41,7 @@ async function init() {
   await fastify.register(fastifyView, {
     // eslint-disable-next-line
     engine: { eta: new Eta() },
-    templates: path.join(__dirname, 'templates'),
+    templates: path.join(__dirname, '../templates'),
   });
 
   // register controllers
