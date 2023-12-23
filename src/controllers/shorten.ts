@@ -29,7 +29,7 @@ export default function shortenController(
 
     // if resData exists, return 409
     if (result) {
-      return reply.code(409).send({ error: 'Please use different slug' });
+      return reply.code(409).send({ error: 'Conflict', message: 'Please use different slug' });
     }
 
     // if resData doesn't exist, insert into database
@@ -38,8 +38,8 @@ export default function shortenController(
       [slug, originalUrl],
     );
 
-    // return shortenURL
-    return reply.send({ shortenUrl: `${fastify.listeningOrigin}/${slug}` });
+    // return shortUrl
+    return reply.send({ shortUrl: `${fastify.listeningOrigin}/${slug}` });
   });
 
   done();

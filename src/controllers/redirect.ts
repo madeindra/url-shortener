@@ -17,13 +17,13 @@ export default function redirectController(
 
     // if row doesn't exist, return 404
     if (!result) {
-      return reply.code(404).send({ error: 'URL not found' });
+      return reply.code(404).send({ error: 'Not Found', message: 'Slug not found' });
     }
 
     // validate url
     const valid = validateUrl(result.original_url);
     if (!valid) {
-      return reply.code(400).send({ error: 'Invalid URL' });
+      return reply.code(400).send({ error: 'Bad Request', message: 'Invalid URL' });
     }
 
     // redirect to original_url
