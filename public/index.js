@@ -5,7 +5,7 @@ const copyButton = document.getElementById('copyButton');
 const tooltip = new bootstrap.Tooltip(copyButton, {
   placement: 'top',
   title: 'Link copied!',
-  trigger: 'manual'
+  trigger: 'manual',
 });
 
 // handle the copy onclick event
@@ -26,7 +26,7 @@ copyButton.onclick = () => {
   setTimeout(() => {
     tooltip.hide();
   }, 1000);
-}
+};
 
 // handle the form submission
 const urlForm = document.getElementById('urlForm');
@@ -35,7 +35,7 @@ urlForm.onsubmit = async (event) => {
   event.preventDefault();
 
   // validate form
-  urlForm.classList.add('was-validated')
+  urlForm.classList.add('was-validated');
   if (!urlForm.checkValidity()) {
     // add was-validated class to show validation errors
     event.stopPropagation();
@@ -63,10 +63,10 @@ urlForm.onsubmit = async (event) => {
   const response = await fetch('/shorten', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(body),
-  })
+  });
 
   // restore the button to its original state
   restoreButton();
@@ -110,14 +110,14 @@ function setButtonLoading(element) {
   return () => {
     // restore the original inner html
     element.innerHTML = original;
-  }
+  };
 }
 
 // dismis alert on button click
 document.getElementById('alertDismis').onclick = () => {
   // add d-none class to alertDiv to hide it
   document.getElementById('alertDiv').classList.add('d-none');
-}
+};
 
 // function to set warning message
 function setWarningMessage(message) {
