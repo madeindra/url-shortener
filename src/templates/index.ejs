@@ -13,14 +13,20 @@
 
 <body>
   <div class="container">
+    <header class="text-center my-5">
+      <h1 class="display-4">URL Shortener</h1>
+      <p class="lead">Create your own short URL for easier sharing</p>
+    </header>
+
     <main class="mx-auto my-5">
       <div class="row">
         <div class="col">
+          
           <form id="urlForm">
             <div class="input-group mb-3">
               <input type="text" class="form-control" id="urlInput" placeholder="Enter URL" required>
               <input type="text" class="form-control" id="slugInput" placeholder="Enter Custom Slug" minlength="5">
-              <button type="submit" class="btn btn-primary">Shorten URL</button>
+              <button type="submit" class="btn btn-primary">Shorten</button>
             </div>
           </form>
         </div>
