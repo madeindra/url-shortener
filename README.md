@@ -31,6 +31,26 @@ export DB_TABLENAME=urls
 npm start
 ```
 
+## Docker
+
+1. Build the image
+
+```
+docker build \
+--build-arg PORT=3000 \
+--build-arg HOST=0.0.0.0 \
+--build-arg DB_PATH=database.db \
+--build-arg DB_TABLENAME=urls \
+--no-cache \
+. -t yourusername/url-shortener:latest
+```
+
+2. Run the container
+
+```
+docker run -d -p 3000:3000 yourusername/url-shortener:latest
+```
+
 ## Usage
 
 1. Open your browser and visit `http://localhost:3000`
@@ -60,5 +80,5 @@ GET /:slug
 
 ## TODOs
 - [X] Add homepage with form to shorten URL
-- [ ] Add docker support
+- [X] Add docker support
 - [ ] Add testings
