@@ -39,7 +39,7 @@ export default function shortenController(
     );
 
     // return shortUrl
-    return reply.send({ shortUrl: `${fastify.listeningOrigin}/${slug}` });
+    return reply.send({ shortUrl: `${request.hostname}/${slug}` });
   });
 
   done();
