@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-bs-theme="dark">
 
 <head>
   <meta charset="UTF-8">
@@ -14,8 +14,8 @@
 <body>
   <div class="container">
     <header class="text-center my-5">
-      <h1 class="display-4">URL Shortener</h1>
-      <p class="lead">Create your own short URL for easier sharing</p>
+      <h1 class="display-4 fw-medium">URL Shortener</h1>
+      <p class="lead fw-lighter">Create your own short URL for easier sharing</p>
     </header>
 
     <main class="mx-auto my-5"></main>
@@ -29,7 +29,7 @@
           <div class="card mb-3">
             <div class="card-body">
               <div class="mb-3">
-                <label for="urlInput" class="form-label">Enter a long URL<span class="text-danger">*</span></label>
+                <label for="urlInput" class="form-label fw-medium">Enter a long URL<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="urlInput" placeholder="Example: https://example.com" pattern='^(http|https):\/\/[^ "]+'
                   required>
                 <div class="invalid-feedback">
@@ -37,14 +37,14 @@
                 </div>
               </div>
               <div class="mb-3">
-                <label for="slugInput" class="form-label">Enter a custom short URL <span class="text-muted">(min 5
+                <label for="slugInput" class="form-label fw-medium">Enter a custom short URL <span class="text-muted">(min 5
                     characters)</span></label>
                 <input type="text" class="form-control" id="slugInput" placeholder="Example: mylink" minlength="5" pattern="[a-zA-Z0-9]+">
                 <div class="invalid-feedback">
                   Please use alphanumeric only with a minimum of 5 characters.
                 </div>
               </div>
-              <button type="submit" class="btn btn-outline-primary" id="submitButton">Create Short URL</button>
+              <button type="submit" class="btn btn-light" id="submitButton">Create Short URL</button>
             </div>
           </div>
         </form>
@@ -56,7 +56,7 @@
         <div class="card mb-3">
           <div class="card-body">
             <div class="mb-3">
-              <label for="shortenedUrl" class="form-label">Your short URL</label>
+              <label for="shortenedUrl" class="form-label fw-medium">Your short URL</label>
               <div class="input-group">
                 <input type="text" class="form-control" id="shortenedUrl" readonly>
                 <button class="btn btn-outline-secondary" type="button" id="copyButton">Copy</button>
@@ -71,11 +71,11 @@
     <footer class="my-5 text-body-secondary text-center text-small">
       <p class="mb-1">© <%=new Date().getFullYear()%> Made Indra</p>
       <ul class="list-inline">
-        <li class="list-inline-item"><a class="link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+        <li class="list-inline-item"><a class="link-light link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
             href="https://madecanggih.dev">Blog</a></li>
-        <li class="list-inline-item"><a class="link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+        <li class="list-inline-item"><a class="link-light link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
             href="https://github.com/madeindra">GitHub</a></li>
-        <li class="list-inline-item"><a class="link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+        <li class="list-inline-item"><a class="link-light link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
             href="https://linkedin.com/in/mdeindra/">LinkedIn</a></li>
       </ul>
     </footer>
