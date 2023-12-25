@@ -1,5 +1,8 @@
 # URL Shortener
+
 Simple URL shortener built using Typescript with Fastify and SQLite.
+
+![preview](https://raw.githubusercontent.com/madeindra/url-shortener/master/preview.png "preview")
 
 ## Installation
 
